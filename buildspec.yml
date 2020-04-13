@@ -5,7 +5,7 @@ phases:
     commands:
       - yarn install
       - yarn start
-      
+
 artifacts:
   files:
-     - '*/*'
+     - '**/*'
