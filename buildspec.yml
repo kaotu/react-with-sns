@@ -3,8 +3,6 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo Install aws cli
-      - sudo apt-get install awscli -y
       - echo Loggin AWS ECR
       - $(aws ecr get-login --region ap-southeast-1 --no-include-email)
 
