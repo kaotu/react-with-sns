@@ -8,14 +8,16 @@ phases:
 
   build:
     commands:
+      - echo Build the Docker image
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
 
   post_build:
     commands:
+      - echo Pushing the Docker image
       - docker push $IMAGE_REPO_NAME:$IMAGE_TAG
+      - echo Writing image definition file...
+      - printf '[{"name" : "react-app-sns", "imageUri" : "%s"}]' $IMAGE_REPO_NAME:$IMAGE_TAG > imagedefinitions.json
 
 artifacts:
   files:
-    - 'scripts/*'
-    - 'appspec.yml'
     - 'imagedefinitions.json'
