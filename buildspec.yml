@@ -16,7 +16,7 @@ phases:
       - echo Pushing the Docker image
       - docker push $IMAGE_REPO_NAME:$IMAGE_TAG
       - echo Writing image definition file...
-      - printf '[{"name":"react-app-sns", "imageUri":"%s"}]' $IMAGE_REPO_NAME:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"reactapp", "imageUri":"%s"}]' $IMAGE_REPO_NAME:$IMAGE_TAG > imagedefinitions.json
 
 artifacts:
   files:
