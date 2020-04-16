@@ -1,26 +1,49 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { 
+  InputGroup,
+  Input,
+  Row,
+  Col,
+  Container,
+  Button
+} from 'reactstrap';
+import ApiService from './services/apiservices'
+class App extends React.Component {
+  state = {
+    siteName: '',
+    url: ''
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  submitData = async () => {
+    const { siteName, url } = this.state
+    const response = await ApiService.createSite({ site_name: siteName, url: url })
+    console.log(response)
+  } 
+
+  render () {
+    return (
+      <Container>
+        <Row>
+          <Col>
+            <InputGroup>
+              <Input 
+                placeholder="site name" 
+                onChange={(e)=> this.setState({ siteName: e.target.value })}
+              />
+            </InputGroup>
+            <InputGroup>
+              <Input 
+                placeholder="url" 
+                onChange={(e) => this.setState({ url: e.target.value })}
+              />
+            </InputGroup>
+            <Button onClick={() => this.submitData()}>Create Site</Button>
+          </Col>
+        </Row>
+      </Container> 
+    );
+  }
 }
 
 export default App;
