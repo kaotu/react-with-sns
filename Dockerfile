@@ -3,4 +3,5 @@ WORKDIR /app
 COPY . .
 RUN yarn install
 RUN yarn build
-CMD node serve -p 3000 --host=0.0.0.0
+RUN yarn global add serve
+CMD serve -s build
