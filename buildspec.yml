@@ -18,3 +18,4 @@ artifacts:
   files:
     - 'scripts/*'
     - 'appspec.yml'
+    - 'imagedefinitions.json'
